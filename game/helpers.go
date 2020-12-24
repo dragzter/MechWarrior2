@@ -23,6 +23,7 @@ func MakeTextPrompt(lb string) string {
 	return result
 }
 
+// MakeSelectPrompt - Wrapper for promtpui select
 func MakeSelectPrompt(si []string, lb string) string {
 	prompt := promptui.Select{
 		Label: mainPlayer.Name + ", " + lb, // lb "What would you like to do?"
@@ -46,7 +47,12 @@ func MainMenu() {
 		"Go Back",
 	}
 	result := MakeSelectPrompt(list, "What would you like to do?")
-	fmt.Println("You have selected", result)
+
+	if result == "Error" {
+		fmt.Println("Invalid selection, menu exited.")
+	} else {
+		fmt.Println("You have selected", result)
+	}
 
 	if result == "Board Mech" {
 		CreateMech(&mech)
