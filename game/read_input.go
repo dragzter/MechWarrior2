@@ -7,7 +7,7 @@ import (
 func ReadInput(s string) {
 
 	switch s {
-	case "tes":
+	case "test":
 		fmt.Println("Scanner is working.")
 	case "menu":
 		AdvanceGame()
@@ -22,6 +22,8 @@ func ReadInput(s string) {
 			fmt.Println("\nYou have already set your name,", mainPlayer.Name)
 		}
 	case "quit":
+		QuitGame()
+	case "exit":
 		QuitGame()
 	default:
 		AnnounceRootMenu()

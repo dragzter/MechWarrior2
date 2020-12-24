@@ -10,6 +10,7 @@ import (
 var mainPlayer = Player{}
 var mech = Mech{}
 
+// Play - Starts the game scanner loop
 func Play() {
 	scanner := bufio.NewScanner(os.Stdin)
 	mechwarrior :=
