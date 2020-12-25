@@ -17,7 +17,7 @@ var repairKit = Item{
 	Property: ItemEffect{
 		Name:         "Assorted parts.",
 		Description:  "Theres all kinds of stuff inthere.",
-		EffectAmount: 5,
+		EffectAmount: 10,
 	},
 }
 
@@ -26,7 +26,7 @@ var deflector = Item{
 	Description: "The Deflector will absorb all damage taken form a single salvo before it depletes.",
 	Property: ItemEffect{
 		Name:         "Deflection of enemy fire.",
-		Description:  "Makes Meh immune for one round of combat.",
+		Description:  "Makes Mech immune for one round of combat.",
 		EffectAmount: 1,
 	},
 }
@@ -62,9 +62,9 @@ var autoCannonB = Weapon{
 	Ready:       true,
 }
 
-var autoCannonB = Weapon{
+var autoCannonC = Weapon{
 	Name:        "M3-HE Variant Autocannon",
-	Description: "HE - High explosive.  Heavier rounds means the HE is less accurate than the VSE variant and carries fewer rounds, but much more damage.",
+	Description: "HE - High explosive.  Heavier rounds means the HE is less accurate than the VSE variant and carries fewer rounds, but does much more damage.",
 	Damage:      24,
 	Accuracy:    75,
 	Attacks:     2,
@@ -82,4 +82,59 @@ var missilePodA = Weapon{
 	Ready:       true,
 }
 
-// Effects
+/**
+=================
+| Mech Variants |
+=================
+
+Armor is a direct sutraction of damage done.
+
+Example:
+Your mech has 10 armor,
+Your mech is hit for 20 damage
+Your armor absorbs 10 damage, the rest is applied to your remaining hitpoints.
+
+If your armor exceeds the damage you sustained, you take no damage.
+
+Armor Levels:
+1. Light
+	3 - 10
+2. Medium
+	11 - 16
+3. Heavy
+	17 - 24
+4. Super Heavy
+	25 - 100+
+
+
+*/
+
+var starterMech = &Mech{
+	Name:        "P66 Havoc Combat System (King Crab)",
+	Codename:    "Havoc King Crab",
+	ID:          TokenGenerator(),
+	Armor:       6,
+	Hitpoints:   450,
+	WeaponSlots: 1,
+	Weapons:     map[string]Weapon{},
+}
+
+var starterMechB = &Mech{
+	Name:        "Stemson S200 Air and Ground Combat Vehicle",
+	Codename:    "Jaguar",
+	ID:          TokenGenerator(),
+	Armor:       5,
+	Hitpoints:   400,
+	WeaponSlots: 2,
+	Weapons:     map[string]Weapon{},
+}
+
+var starterMechC = &Mech{
+	Name:        "AET-M1 Combat Walker by Hyperdine",
+	Codename:    "Jaguar",
+	ID:          TokenGenerator(),
+	Armor:       8,
+	Hitpoints:   380,
+	WeaponSlots: 1,
+	Weapons:     map[string]Weapon{},
+}

@@ -4,8 +4,10 @@ import "fmt"
 
 // Player - The main player
 type Player struct {
-	Name string
-	ID   int
+	Name    string
+	ID      int
+	HasMech bool
+	Vehicle Mech
 }
 
 // Weapon - can be equipped by Mech
@@ -22,6 +24,7 @@ type Weapon struct {
 // Mech - Owned by player, has weapon slots, when mech is destroyed, game ends
 type Mech struct {
 	Name        string
+	Codename    string
 	ID          string
 	Armor       int
 	Hitpoints   int
@@ -54,6 +57,12 @@ type GameState struct {
 	PlayerSet bool
 	MechIsSet bool
 }
+
+type MainMenuOptions struct {
+	List []string
+}
+
+type GameAnnouncer struct{}
 
 /**
  	When the player performs a scan, he may encounter
@@ -97,9 +106,18 @@ func (p *Player) PrintName() {
 }
 
 func (p *Player) SetName() {
-	result := MakeTextPrompt("Name")
+	result := MakeTextPrompt("Enter Name")
 	p.Name = result
 
 	fmt.Println("Player Name:", mainPlayer.Name+".", "\nLoading Menu...")
 	AdvanceGame()
+}
+
+// Don't really know yet what i need this for.  Seems like it might be useful
+func (an GameAnnouncer) MakeAnnouncement(any ...interface{}) {
+	fmt.Println(any)
+}
+
+func (an GameAnnouncer) AnnounceRootMenu() {
+	fmt.Println("\nAt Main screen\nType 'menu' to enter game menu. Type 'help' to see all options")
 }
