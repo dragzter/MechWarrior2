@@ -35,6 +35,7 @@ var MechChoice = MainMenuOptions{
 	},
 }
 
+
 var GA = GameAnnouncer{}
 
 // Play - Starts the game scanner loop
@@ -50,7 +51,7 @@ func Play() {
 	`
 	fmt.Println(mechwarrior)
 	fmt.Println("Welcome to MechWarrior, Press Enter to begin.")
-	response := SingleSelectPrompt([]string{"Begin Game"}, "Press Enter.")
+	response := SingleSelectPrompt([]string{"Begin Game"}, "Press Enter")
 
 	if response == "Begin Game" {
 

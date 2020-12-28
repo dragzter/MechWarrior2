@@ -112,26 +112,31 @@ func TokenGenerator() string {
 }
 
 func DisplayMechInfo(st string) {
+
 	switch st {
 	case starterMech.Name:
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMech.Armor, "\nHitpoints:", starterMech.Hitpoints, "\nWeapon Slots:", starterMech.WeaponSlots)
+		mainPlayer.Vehicle = *starterMech
 	case starterMechB.Name:
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMechB.Armor, "\nHitpoints:", starterMechB.Hitpoints, "\nWeapon Slots:", starterMechB.WeaponSlots)
+		mainPlayer.Vehicle = *starterMechB
 	case starterMechC.Name:
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMechC.Armor, "\nHitpoints:", starterMechC.Hitpoints, "\nWeapon Slots:", starterMechC.WeaponSlots)
+		mainPlayer.Vehicle = *starterMechC
 	}
 
-	selectOptions := MainMenuOptions{
+	selectOptions := &MainMenuOptions{
 		List: []string{
-			"Select Mech",
+			"Select this Mech",
 			"Go Back",
 		},
 	}
 
-	response := MakeSelectPrompt(&selectOptions, "What would you like to do?")
+	response := MakeSelectPrompt(selectOptions, "What would you like to do?")
 
-	if response == "Select Mech" {
-		fmt.Println("You selected:", st)
+	if response == "Select this Mech" {
+
+		fmt.Println("You selected:", mainPlayer)
 	}
 
 	if response == "Go Back" {
