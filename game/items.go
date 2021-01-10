@@ -32,7 +32,7 @@ var deflector = Item{
 }
 
 // Weapons
-var chainBladeA = Weapon{
+var chainBladeA = &Weapon{
 	Name:        "M9 Vulcan Chain Blade",
 	Description: "Vulcan Industries Model A-CF9 Carbon forged chain blade, adopted the shortened designation; M9 for the Military.",
 	Damage:      10,
@@ -42,7 +42,7 @@ var chainBladeA = Weapon{
 	Ready:       true,
 }
 
-var autoCannonA = Weapon{
+var autoCannonA = &Weapon{
 	Name:        "M3 Autocannon",
 	Description: "Standard shoulder-mounted.  Fires 50cal rounds at a rate of 300 rounds per minute.",
 	Damage:      6,
@@ -52,7 +52,7 @@ var autoCannonA = Weapon{
 	Ready:       true,
 }
 
-var autoCannonB = Weapon{
+var autoCannonB = &Weapon{
 	Name:        "M3-VSE Variant Autocannon",
 	Description: "The VE (Vertical Sensory Engagement) Variant can engage targets faster and fire far more accurately.",
 	Damage:      6,
@@ -62,7 +62,7 @@ var autoCannonB = Weapon{
 	Ready:       true,
 }
 
-var autoCannonC = Weapon{
+var autoCannonC = &Weapon{
 	Name:        "M3-HE Variant Autocannon",
 	Description: "HE - High explosive.  Heavier rounds means the HE is less accurate than the VSE variant and carries fewer rounds, but does much more damage.",
 	Damage:      24,
@@ -72,7 +72,7 @@ var autoCannonC = Weapon{
 	Ready:       true,
 }
 
-var missilePodA = Weapon{
+var missilePodA = &Weapon{
 	Name:        "M90 Lionshead Missile Pod",
 	Description: "Chest or shoulder mounted missile battery.",
 	Damage:      30,

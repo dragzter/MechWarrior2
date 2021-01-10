@@ -56,6 +56,11 @@ func MainMenu() {
 	if !mainPlayer.HasMech {
 		GameMenu.List = append([]string{MenuList["Armory"]}, GameMenu.List...)
 		mainPlayer.HasMech = true
+	} else {
+		GameMenu.List = []string{
+			"Main Menu",
+			"Quit Game",
+		}
 	}
 
 	result := MakeSelectPrompt(&GameMenu, "What would you like to do?")
@@ -112,13 +117,24 @@ func TokenGenerator() string {
 }
 
 func DisplayMechInfo(st string) {
+	selectedMech := &Mech{}
+
 	switch st {
 	case starterMech.Name:
+		fmt.Println("===============================")
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMech.Armor, "\nHitpoints:", starterMech.Hitpoints, "\nWeapon Slots:", starterMech.WeaponSlots)
+		fmt.Println("===============================")
+		selectedMech = starterMech
 	case starterMechB.Name:
+		fmt.Println("===============================")
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMechB.Armor, "\nHitpoints:", starterMechB.Hitpoints, "\nWeapon Slots:", starterMechB.WeaponSlots)
+		fmt.Println("===============================")
+		selectedMech = starterMechB
 	case starterMechC.Name:
+		fmt.Println("===============================")
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMechC.Armor, "\nHitpoints:", starterMechC.Hitpoints, "\nWeapon Slots:", starterMechC.WeaponSlots)
+		fmt.Println("===============================")
+		selectedMech = starterMechC
 	}
 
 	selectOptions := MainMenuOptions{
@@ -131,7 +147,10 @@ func DisplayMechInfo(st string) {
 	response := MakeSelectPrompt(&selectOptions, "What would you like to do?")
 
 	if response == "Select Mech" {
-		fmt.Println("You selected:", st)
+		mainPlayer.SetMech(*selectedMech)
+		mainPlayer.WeaponizeMech(*autoCannonA)
+		//mainPlayer.Summary()
+		MainMenu()
 	}
 
 	if response == "Go Back" {

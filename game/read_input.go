@@ -14,7 +14,7 @@ func ReadInput(s string) {
 	case "help":
 		fmt.Print("You can type:\n'who' to show your name\n'menu' to enter game menu\n'quit' or 'exit' to quit game\n")
 	case "who":
-		mainPlayer.PrintName()
+		mainPlayer.Summary()
 	case "quit":
 		QuitGame()
 	case "exit":

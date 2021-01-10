@@ -105,12 +105,25 @@ func (p *Player) PrintName() {
 	fmt.Println("Player name:", p.Name)
 }
 
+func (p *Player) Summary() {
+	fmt.Println(p)
+}
+
 func (p *Player) SetName() {
 	result := MakeTextPrompt("Enter Name")
 	p.Name = result
 
 	fmt.Println("Player Name:", mainPlayer.Name+".", "\nLoading Menu...")
 	AdvanceGame()
+}
+
+func (p *Player) SetMech(mc Mech) {
+	p.Vehicle = mc
+	fmt.Println(p.Name + ", you have boarded " + mc.Name)
+}
+
+func (p *Player) WeaponizeMech(w Weapon) {
+	p.Vehicle.Weapons[w.Name] = w
 }
 
 // Don't really know yet what i need this for.  Seems like it might be useful
