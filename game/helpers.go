@@ -123,34 +123,29 @@ func DisplayMechInfo(st string) {
 	case starterMech.Name:
 		fmt.Println("===============================")
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMech.Armor, "\nHitpoints:", starterMech.Hitpoints, "\nWeapon Slots:", starterMech.WeaponSlots)
-		fmt.Println("===============================")
-		selectedMech = starterMech
+		mainPlayer.Vehicle = *starterMech
 	case starterMechB.Name:
 		fmt.Println("===============================")
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMechB.Armor, "\nHitpoints:", starterMechB.Hitpoints, "\nWeapon Slots:", starterMechB.WeaponSlots)
-		fmt.Println("===============================")
-		selectedMech = starterMechB
+		mainPlayer.Vehicle = *starterMechB
 	case starterMechC.Name:
 		fmt.Println("===============================")
 		fmt.Println("\n"+st, "\n------------------", "\nArmor:", starterMechC.Armor, "\nHitpoints:", starterMechC.Hitpoints, "\nWeapon Slots:", starterMechC.WeaponSlots)
-		fmt.Println("===============================")
-		selectedMech = starterMechC
+		mainPlayer.Vehicle = *starterMechC
 	}
 
-	selectOptions := MainMenuOptions{
+	selectOptions := &MainMenuOptions{
 		List: []string{
-			"Select Mech",
+			"Select this Mech",
 			"Go Back",
 		},
 	}
 
-	response := MakeSelectPrompt(&selectOptions, "What would you like to do?")
+	response := MakeSelectPrompt(selectOptions, "What would you like to do?")
 
-	if response == "Select Mech" {
-		mainPlayer.SetMech(*selectedMech)
-		mainPlayer.WeaponizeMech(*autoCannonA)
-		//mainPlayer.Summary()
-		MainMenu()
+	if response == "Select this Mech" {
+
+		fmt.Println("You selected:", mainPlayer)
 	}
 
 	if response == "Go Back" {
